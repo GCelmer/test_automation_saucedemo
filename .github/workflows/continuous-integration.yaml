@@ -20,6 +20,7 @@ jobs:
         run: |
           sudo apt-get install chromium-chromedriver
           sudo find / -name "chromedriver"
+          echo $PATH
 #      - name: Install Chrome and Firefox
 #        run: |
 #          sudo apt install google-chrome-stable
