@@ -16,51 +16,43 @@ jobs:
           pip install pytest
           pip install selenium
           pip install pytest-html
-      - name: Install browser dependencies
-        run: |
-          # Versions
-          CHROME_DRIVER_VERSION=`curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE`
-          SELENIUM_STANDALONE_VERSION=3.9.1
-          SELENIUM_SUBDIR=$(echo "$SELENIUM_STANDALONE_VERSION" | cut -d"." -f-2)
-
-          # Install dependencies.
-          # sudo apt-get install -y unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-4
-          sudo apt-get update
-          sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
-
-          sudo apt-get install default-jdk
-
-          # Install Chrome.
-          sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
-          sudo echo "deb https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get -y update
-          sudo apt-get -y install google-chrome-stable
-
-          # Install ChromeDriver.
-          wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/
-          unzip ~/chromedriver_linux64.zip -d ~/
-          rm ~/chromedriver_linux64.zip
-          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-          sudo chown root:root /usr/local/bin/chromedriver
-          sudo chmod 0755 /usr/local/bin/chromedriver
-
 #      - name: Install browser dependencies
 #        run: |
-#          sudo apt-get install chromium-chromedriver
-#          sudo find / -name "chromedriver"
-#          echo $PATH
-#      - name: Install Chrome and Firefox.
-#        run: |
-#          sudo apt install google-chrome-stable
-#          sudo apt-get install firefox
-#      - name: Install chromedriver and geckodriver (Firefox Webdriver)
-#        run: |
-#          seleniumbase install chromedriver
-#          seleniumbase install geckodriver
-      - name: Test with pytest
-        working-directory: ./tests
+#          # Versions
+#          CHROME_DRIVER_VERSION=`curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE`
+#          SELENIUM_STANDALONE_VERSION=3.9.1
+#          SELENIUM_SUBDIR=$(echo "$SELENIUM_STANDALONE_VERSION" | cut -d"." -f-2)
+#
+#          # Install dependencies.
+#          # sudo apt-get install -y unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-4
+#          sudo apt-get update
+#          sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
+#
+#          sudo apt-get install default-jdk
+#
+#          # Install Chrome.
+#          sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+#          sudo echo "deb https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+#          sudo apt-get -y update
+#          sudo apt-get -y install google-chrome-stable
+#
+#          # Install ChromeDriver.
+#          wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/
+#          unzip ~/chromedriver_linux64.zip -d ~/
+#          rm ~/chromedriver_linux64.zip
+#          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
+#          sudo chown root:root /usr/local/bin/chromedriver
+#          sudo chmod 0755 /usr/local/bin/chromedriver
+
+      - name: Install browser dependencies
         run: |
-          py.test --browser_name chrome --html=Reports/reports.html
+          sudo apt-get install chromium-chromedriver
+          sudo find / -name "chromedriver"
+          echo $PATH
+#      - name: Test with pytest
+#        working-directory: ./tests
+#        run: |
+#          py.test --browser_name chrome --html=Reports/reports.html
 
 
 
