@@ -39,6 +39,12 @@ jobs:
           sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
           sudo chown root:root /usr/local/bin/chromedriver
           sudo chmod 0755 /usr/local/bin/chromedriver
+
+          echo "teste"
+
+          ls /usr/local/bin/chromedriver
+
+          echo "deu"
 #      - name: Install browser dependencies
 #        run: |
 #          sudo apt-get install chromium-chromedriver
