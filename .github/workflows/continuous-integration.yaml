@@ -15,6 +15,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
       - name: Test with pytest
-        run: pytest -vv
+        run: |
+          cd tests
+          py.test --browser_name chrome --html=$WORKSPACE/Reports/reports.html
 
 
