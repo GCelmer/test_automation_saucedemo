@@ -17,6 +17,8 @@ jobs:
       - name: Test with pytest
         run: |
           pwd
+          ls
+          cd tests
 
 
 
