@@ -28,11 +28,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
 
+          sudo apt-get install default-jdk
+
           # Install Chrome.
-          # sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-          # sudo echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+          sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+          sudo echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
           # sudo apt-get -y update
           # sudo apt-get -y install google-chrome-stable
+
 
           # Install ChromeDriver.
           wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/
@@ -61,10 +64,10 @@ jobs:
 #        run: |
 #          seleniumbase install chromedriver
 #          seleniumbase install geckodriver
-      - name: Test with pytest
-        working-directory: ./tests
-        run: |
-          py.test --browser_name chrome --html=Reports/reports.html
+#      - name: Test with pytest
+#        working-directory: ./tests
+#        run: |
+#          py.test --browser_name chrome --html=Reports/reports.html
 
 
 
