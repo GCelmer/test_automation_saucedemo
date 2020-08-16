@@ -17,7 +17,6 @@ jobs:
       - name: Test with pytest
         run: |
           ls
-          cd tests
-          py.test --browser_name chrome --html=$WORKSPACE/Reports/reports.html
+
 
 
