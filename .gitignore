@@ -6,4 +6,5 @@ venv/
 *.pytest_cache/
 *logfile.log*
 *reports.html*
+*report.html*
 **/.DS_store/*
