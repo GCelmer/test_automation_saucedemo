@@ -44,12 +44,6 @@ jobs:
           sudo chown root:root /usr/local/bin/chromedriver
           sudo chmod 0755 /usr/local/bin/chromedriver
 
-          echo "teste"
-          echo $PATH
-
-          ls /usr/local/bin/chromedriver
-
-          echo "deu"
 #      - name: Install browser dependencies
 #        run: |
 #          sudo apt-get install chromium-chromedriver
@@ -63,10 +57,10 @@ jobs:
 #        run: |
 #          seleniumbase install chromedriver
 #          seleniumbase install geckodriver
-#      - name: Test with pytest
-#        working-directory: ./tests
-#        run: |
-#          py.test --browser_name chrome --html=Reports/reports.html
+      - name: Test with pytest
+        working-directory: ./tests
+        run: |
+          py.test --browser_name chrome --html=Reports/reports.html
 
 
 
