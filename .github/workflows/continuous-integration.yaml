@@ -16,6 +16,16 @@ jobs:
           pip install pytest
           pip install selenium
           pip install pytest-html
+      - name: Install browser dependencies
+          sudo apt-get install chromium-chromedriver
+#      - name: Install Chrome and Firefox
+#        run: |
+#          sudo apt install google-chrome-stable
+#          sudo apt-get install firefox
+#      - name: Install chromedriver and geckodriver (Firefox Webdriver)
+#        run: |
+#          seleniumbase install chromedriver
+#          seleniumbase install geckodriver
       - name: Test with pytest
         working-directory: ./tests
         run: |
