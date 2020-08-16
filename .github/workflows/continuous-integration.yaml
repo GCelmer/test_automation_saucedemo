@@ -19,6 +19,7 @@ jobs:
       - name: Install browser dependencies
         run: |
           sudo apt-get install chromium-chromedriver
+          find / -name "chromedriver"
 #      - name: Install Chrome and Firefox
 #        run: |
 #          sudo apt install google-chrome-stable
