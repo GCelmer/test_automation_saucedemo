@@ -16,7 +16,7 @@ def setup(request):
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
         #driver = webdriver.Chrome(executable_path="./driver/chromedriver")
-        driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+        driver = webdriver.Chrome("/usr/bin/chromedriver")
     elif browser_name == "firefox":
         driver = webdriver.firefox()
         #driver = webdriver.firefox(executable_path="./driver/firefoxdriver")
