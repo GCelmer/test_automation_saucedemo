@@ -41,6 +41,7 @@ jobs:
           sudo chmod 0755 /usr/local/bin/chromedriver
 
           echo "teste"
+          echo $PATH
 
           ls /usr/local/bin/chromedriver
 
