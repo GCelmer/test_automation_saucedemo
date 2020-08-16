@@ -15,9 +15,9 @@ def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
-        driver = webdriver.Chrome(executable_path="/Users/gabrielijungcelmer/Documents/chromedriver")
-    elif browser_name == "safari":
-        driver = webdriver.safari(executable_path="/usr/bin/safaridriver")
+        driver = webdriver.Chrome(executable_path="./driver/chromedriver")
+    elif browser_name == "firefox":
+        driver = webdriver.firefox(executable_path="./driver/firefoxdriver")
     driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
     request.cls.driver = driver
