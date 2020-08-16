@@ -47,7 +47,7 @@ jobs:
       - name: Install browser dependencies
         run: |
           sudo apt-get install chromium-chromedriver
-          cp /usr/bin/chromedriver /usr/local/bin/
+          sudo cp /usr/bin/chromedriver /usr/local/bin/
           sudo find / -name "chromedriver"
       - name: Test with pytest
         working-directory: ./tests
