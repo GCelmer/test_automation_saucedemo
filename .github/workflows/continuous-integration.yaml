@@ -38,7 +38,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: Upload report tests
-    - uses: actions/upload-artifact@v2
-        with:
-          name: report.html
-          path: //home/runner/work/test_automation_saucedemo/test_automation_saucedemo/tests/Reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: //home/runner/work/test_automation_saucedemo/test_automation_saucedemo/tests/Reports
