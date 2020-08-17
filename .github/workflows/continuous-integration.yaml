@@ -16,7 +16,10 @@ jobs:
         pip install pytest
         pip install selenium
         pip install pytest-html
-        sudo apt-fast install -y google-chrome
+        sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+        sudo echo "deb https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get -y update
+        sudo apt-get -y install google-chrome-stable
     - name: Prepare Selenium
       uses: nanasess/setup-chromedriver@master
     - name: Test with pytest
