@@ -16,6 +16,7 @@ jobs:
         pip install pytest
         pip install selenium
         pip install pytest-html
+        sudo apt-fast install -y google-chrome
     - name: Prepare Selenium
       uses: nanasess/setup-chromedriver@master
     - name: Test with pytest
