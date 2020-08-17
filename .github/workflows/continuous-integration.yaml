@@ -34,11 +34,6 @@ jobs:
         && rm /etc/apt/sources.list.d/google-chrome.list \
         && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
-        useradd headless --shell /bin/bash --create-home \
-        && usermod -a -G sudo headless \
-        && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
-        && echo 'headless:nopassword' | chpasswd
-
     # - name: Prepare Selenium
     #   uses: nanasess/setup-chromedriver@master
     - name: Test with pytest
