@@ -16,26 +16,9 @@ jobs:
         pip install pytest
         pip install selenium
         pip install pytest-html
-        pip install pytest-selenium
-        pip install pytest-base-url
+        pip install webdriver_manager
+   
 
-        CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
-        mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
-        curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
-        unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION && \
-        rm /tmp/chromedriver_linux64.zip && \
-        chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver && \
-        sudo ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
-
-        sudo wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-        && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list \
-        && sudo apt-get update -qqy \
-        && sudo apt-get -qqy install google-chrome-unstable \
-        && sudo rm /etc/apt/sources.list.d/google-chrome.list \
-        && sudo rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-    # - name: Prepare Selenium
-    #   uses: nanasess/setup-chromedriver@master
     - name: Test with pytest
       working-directory: ./tests
       run: |
