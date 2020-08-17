@@ -32,8 +32,9 @@ jobs:
         py.test --browser_name chrome --html=./reports/reports.html
 
 
-  gitHubCreatesdoc:
-    name: Test run report
+
+ gitHubCreatesdoc:
+   name: Test run report
      runs-on: ubuntu-latest
      steps:
        - name: Upload report tests
