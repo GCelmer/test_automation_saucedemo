@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 driver = None
 
@@ -18,7 +19,11 @@ def setup(request):
     if browser_name == "chrome":
         #driver = webdriver.Chrome(executable_path="./driver/chromedriver")
         #driver = webdriver.Chrome()
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument('--disable-gpu')
+        #driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options, executable_path=ChromeDriverManager().install())
     elif browser_name == "firefox":
         driver = webdriver.firefox()
         #driver = webdriver.firefox(executable_path="./driver/firefoxdriver")
