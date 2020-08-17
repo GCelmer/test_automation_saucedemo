@@ -1,10 +1,10 @@
 import pytest
-from PageObjects.LogIn import LogIn
-from TestData.UsernPassword import Users
-from Utilities.BaseClass import BaseClass
+from pageobjects.login import LogIn
+from testdata.userpassword import Users
+from Utilities.basesetup import BaseSetup
 
 
-class TestPermissionsLockedOut(BaseClass):
+class TestPermissionsLockedOut(BaseSetup):
 
     def test_login_buy(self, getData):
         log = self.getLogger()
@@ -26,6 +26,6 @@ class TestPermissionsLockedOut(BaseClass):
             log.info(message)
             self.driver.refresh()
 
-    @pytest.fixture(params=Users.test_users_Data_locked_out)
+    @pytest.fixture(params=Users.test_users_data_locked_out)
     def getData(self, request):
         return request.param

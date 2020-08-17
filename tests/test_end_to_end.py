@@ -1,13 +1,13 @@
 import time
 import pytest
-from PageObjects.Cart import Cart
-from PageObjects.LogIn import LogIn
-from PageObjects.Products import Products
-from TestData.UsernPassword import Users
-from Utilities.BaseClass import BaseClass
+from pageobjects.cart import Cart
+from pageobjects.login import LogIn
+from pageobjects.products import Products
+from testdata.userpassword import Users
+from Utilities.basesetup import BaseSetup
 
 
-class TestOne(BaseClass):
+class TestEndtoEnd(BaseSetup):
 
     def test_login_buy(self, getData,getData2):
         log = self.getLogger()
@@ -33,8 +33,7 @@ class TestOne(BaseClass):
             log.info("Product: " + title_prod)
             if title_prod == "Test.allTheThings() T-Shirt (Red)":
                 log.info("all products checked")
-                products.addproductcart().click()  # clicks on the first item
-                # .//button[text()='ADD TO CART'] --clica e torna ele remove
+                products.addproductcart().click()
         products.presscard().click()
         cart.clickcheckout().click()
 
@@ -54,10 +53,10 @@ class TestOne(BaseClass):
 
         self.logout()
 
-    @pytest.fixture(params=Users.test_users_Data)
+    @pytest.fixture(params=Users.test_users_data)
     def getData(self, request):
         return request.param
 
-    @pytest.fixture(params=Users.test_users_Data_your_details)
+    @pytest.fixture(params=Users.test_users_data_your_details)
     def getData2(self, request):
         return request.param

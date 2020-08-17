@@ -1,10 +1,10 @@
 import pytest
-from PageObjects.LogIn import LogIn
-from TestData.UsernPassword import Users
-from Utilities.BaseClass import BaseClass
+from pageobjects.login import LogIn
+from testdata.userpassword import Users
+from Utilities.basesetup import BaseSetup
 
 
-class TestPermissionsInvalid(BaseClass):
+class TestPermissionsInvalid(BaseSetup):
 
     def test_login_buy(self, getData):
         log = self.getLogger()
@@ -25,6 +25,6 @@ class TestPermissionsInvalid(BaseClass):
             log.info(message)
             self.driver.refresh()
 
-    @pytest.fixture(params=Users.test_users_Data_invalid_user)
+    @pytest.fixture(params=Users.test_users_data_invalid_user)
     def getData(self, request):
         return request.param

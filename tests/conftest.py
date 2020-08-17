@@ -5,28 +5,23 @@ from selenium.webdriver.chrome.options import Options
 
 driver = None
 
-
 def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
     )
-
 
 @pytest.fixture(scope="class")
 def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
-        #driver = webdriver.Chrome(executable_path="./driver/chromedriver")
-        #driver = webdriver.Chrome()
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
-        #driver = webdriver.Chrome()
+        #driver = webdriver.Chrome(executable_path="/Users/gabrielijungcelmer/Documents/chromedriver")
         driver = webdriver.Chrome(options=chrome_options, executable_path=ChromeDriverManager().install())
     elif browser_name == "firefox":
         driver = webdriver.firefox()
-        #driver = webdriver.firefox(executable_path="./driver/firefoxdriver")
     driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
     request.cls.driver = driver
@@ -36,10 +31,6 @@ def setup(request):
 
 @pytest.mark.hookwrapper
 def pytest_runtest_makereport(item):
-    """
-        Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
-        :param item:
-        """
     pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
