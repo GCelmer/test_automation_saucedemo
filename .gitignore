@@ -8,3 +8,4 @@ venv/
 *report.html*
 **/.DS_store/*
 **.png*
+*Pipfile.lock*
