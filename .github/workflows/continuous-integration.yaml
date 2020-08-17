@@ -17,6 +17,13 @@ jobs:
         pip install selenium
         pip install pytest-html
         pip install webdriver_manager
+
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+        && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list \
+        && sudo apt-get update -qqy \
+        && sudo apt-get -qqy install google-chrome-unstable \
+        && sudo rm /etc/apt/sources.list.d/google-chrome.list \
+        && sudo rm -rf /var/lib/apt/lists/* /var/cache/apt/*
    
 
     - name: Test with pytest

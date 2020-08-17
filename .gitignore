@@ -8,3 +8,4 @@ venv/
 *reports.html*
 *report.html*
 **/.DS_store/*
+**.png*
